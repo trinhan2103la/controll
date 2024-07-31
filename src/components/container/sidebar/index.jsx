@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import go from "D:/WorkSpace/PageControllStatus/fontend/src/assets/logofinepro.png";
+import go from "../../../assets/logofinepro.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faPenNib } from "@fortawesome/free-solid-svg-icons";
 
