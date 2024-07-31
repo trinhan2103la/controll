@@ -11,5 +11,15 @@ body {
 }
 
 input {
-  padding-top-bottom: 2px;
+  padding: 8px 16px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 16px;
+  border-width: 1px;
+  border-radius: 4px;
+  cursor: pointer;
 }

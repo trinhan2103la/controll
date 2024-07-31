@@ -33,7 +33,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`mx-1 px-4 py-2 border rounded ${
+        className={`mx-1 ${
           currentPage === 1
             ? "bg-gray-300 text-gray-500"
             : "bg-white text-blue-500 border-blue-500"
@@ -46,7 +46,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
           key={index}
           onClick={() => pageNumber !== "..." && onPageChange(pageNumber)}
           disabled={pageNumber === "..."}
-          className={`mx-1 px-4 py-2 border rounded ${
+          className={`mx-1 ${
             currentPage === pageNumber
               ? "bg-blue-500 text-white"
               : "bg-white text-blue-500 border-blue-500"
@@ -58,7 +58,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`mx-1 px-4 py-2 border rounded ${
+        className={`mx-1 ${
           currentPage === totalPages
             ? "bg-gray-300 text-gray-500"
             : "bg-white text-blue-500 border-blue-500"

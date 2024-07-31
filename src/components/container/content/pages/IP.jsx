@@ -92,14 +92,12 @@ export default function IP() {
         </div>
         <div className="flex gap-5">
           <input
-            className="border-none outline-none p-1 rounded"
             type="text"
             placeholder="Type"
             value={newType}
             onChange={(e) => setNewType(e.target.value)}
           />
           <input
-            className="border-none outline-none p-1 rounded"
             type="text"
             placeholder="IP"
             value={newIP}
@@ -122,7 +120,7 @@ export default function IP() {
           placeholder="Search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-2 border-none outline-none border-gray-300 rounded w-[30%] mb-5"
+          className="  border-gray-300  w-[30%] mb-5"
         />
         <table className="w-full text-center border border-gray-300 border-collapse">
           <thead>

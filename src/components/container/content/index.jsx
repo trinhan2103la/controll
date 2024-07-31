@@ -9,7 +9,7 @@ const Content = ({ isCollapsed, toggleSidebar }) => {
   return (
     <div className="flex-grow">
       <div className="flex justify-between bg-red-200 h-[58px] ">
-        <button className="text-2xl p-2" onClick={toggleSidebar}>
+        <button className="text-2xl border-none" onClick={toggleSidebar}>
           <FontAwesomeIcon icon={faBars} />
         </button>
         <div className="flex p-2 items-center">
