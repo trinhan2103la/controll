@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faPenNib } from "@fortawesome/free-solid-svg-icons";
 
 const SideBar = ({ isCollapsed }) => {
+  const location = useLocation();
+  const [activeLink, setActiveLink] = useState(location.pathname);
+
   const Data = [
     {
       title: "IP",
@@ -32,6 +36,10 @@ const SideBar = ({ isCollapsed }) => {
     },
   ];
 
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+  };
+
   return (
     <div
       className={`${
@@ -55,7 +63,12 @@ const SideBar = ({ isCollapsed }) => {
           return (
             <div
               key={index}
-              className="text-white text-2xl py-5 hover:bg-blue-200 hover:text-black"
+              className={`text-white text-2xl py-5 ${
+                activeLink === props.link
+                  ? "bg-pastel-blue text-black"
+                  : "hover:bg-blue-200 hover:text-black"
+              }`}
+              onClick={() => handleLinkClick(props.link)}
             >
               <Link to={props.link}>
                 <div className="flex">
