@@ -1,0 +1,68 @@
+/* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
+import go from "D:/WorkSpace/PageControllStatus/fontend/src/assets/logofinepro.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCode, faPenNib } from "@fortawesome/free-solid-svg-icons";
+
+const SideBar = ({ isCollapsed }) => {
+  const Data = [
+    {
+      title: "IP",
+      link: "/",
+      icon: <FontAwesomeIcon icon={faPenNib} />,
+    },
+    {
+      title: "VC",
+      link: "/vc/homeChart",
+      icon: <FontAwesomeIcon icon={faCode} />,
+    },
+    {
+      title: "TDH",
+      link: "/tdh/homeChart",
+      icon: <FontAwesomeIcon icon={faCode} />,
+    },
+    {
+      title: "SYNC",
+      link: "/sync/homeChart",
+      icon: <FontAwesomeIcon icon={faCode} />,
+    },
+  ];
+
+  return (
+    <div
+      className={`${
+        isCollapsed ? "w-[50px]" : ""
+      } bg-navy text-white flex-shrink-0 transition-width duration-300`}
+    >
+      <div className="flex text-2xl gap-2 p-2 bg-navy text-white justify-center border-b-2 border-blue-200">
+        <div>
+          <img src={go} alt="logo" className="w-[50px] h-[40px]" />
+        </div>
+        {!isCollapsed && (
+          <h1 className="font-bold flex justify-center">finepro</h1>
+        )}
+      </div>
+      <div>
+        {Data.map((props, index) => {
+          return (
+            <div
+              key={index}
+              className="text-white text-2xl py-5 hover:bg-blue-200 hover:text-black"
+            >
+              <Link to={props.link}>
+                <div className="flex">
+                  <span className="w-[50px] h-[40px] text-center">
+                    {props.icon}
+                  </span>
+                  {!isCollapsed && <h1>{props.title}</h1>}
+                </div>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default SideBar;
