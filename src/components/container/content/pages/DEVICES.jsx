@@ -12,14 +12,11 @@ export default function DEVICES() {
       <div className="flex gap-4 p-2">
         {DataALL.map((props, index) => {
           return (
-            <div
-              key={index}
-              className="text-2xl font-bold  border-2 border-red-300 rounded bg-red-300 p-1"
-            >
-              <Link to={props.links}>
-                <h1>{props.name}</h1>
-              </Link>
-            </div>
+            <Link key={index} to={props.links}>
+              <button className="text-2xl font-bold  text-white  bg-seaa ">
+                {props.name}
+              </button>
+            </Link>
           );
         })}
       </div>

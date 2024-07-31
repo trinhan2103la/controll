@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         navy: "#402E7A",
+        seaa: "#4B70F5",
       },
     },
   },

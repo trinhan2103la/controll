@@ -12,11 +12,11 @@ export default function VC() {
       <div className="flex gap-4 p-2">
         {DataVC.map((props, index) => {
           return (
-            <div key={index}>
-              <Link to={props.links}>
-                <button>{props.name}</button>
-              </Link>
-            </div>
+            <Link key={index} to={props.links}>
+              <button className="text-2xl font-bold  border-2 border-red-300  bg-red-300 ">
+                {props.name}
+              </button>
+            </Link>
           );
         })}
       </div>
