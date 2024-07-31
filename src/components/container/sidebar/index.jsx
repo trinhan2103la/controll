@@ -11,6 +11,11 @@ const SideBar = ({ isCollapsed }) => {
       icon: <FontAwesomeIcon icon={faPenNib} />,
     },
     {
+      title: "DEVICES",
+      link: "/devices/homeChart",
+      icon: <FontAwesomeIcon icon={faCode} />,
+    },
+    {
       title: "VC",
       link: "/vc/homeChart",
       icon: <FontAwesomeIcon icon={faCode} />,

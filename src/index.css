@@ -9,3 +9,7 @@ body {
   padding: 0;
   box-sizzing: border-box;
 }
+
+input {
+  padding-top-bottom: 2px;
+}
