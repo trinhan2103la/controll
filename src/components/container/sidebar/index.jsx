@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import go from "../../../assets/logofinepro.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faPenNib } from "@fortawesome/free-solid-svg-icons";
 
@@ -36,7 +35,11 @@ const SideBar = ({ isCollapsed }) => {
     >
       <div className="flex text-2xl gap-2 p-2 bg-navy text-white justify-center border-b-2 border-blue-200">
         <div>
-          <img src={go} alt="logo" className="w-[50px] h-[40px]" />
+          <img
+            src="./logofinepro.png"
+            alt="logo"
+            className="w-[50px] h-[40px]"
+          />
         </div>
         {!isCollapsed && (
           <h1 className="font-bold flex justify-center">finepro</h1>
