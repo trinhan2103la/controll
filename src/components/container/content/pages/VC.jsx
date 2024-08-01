@@ -13,7 +13,7 @@ export default function VC() {
         {DataVC.map((props, index) => {
           return (
             <Link key={index} to={props.links}>
-              <button className="font-bold text-2xl bg-sea text-light">
+              <button className="font-bold text-2xl bg-navy text-light">
                 {props.name}
               </button>
             </Link>

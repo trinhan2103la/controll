@@ -8,6 +8,10 @@ const Header = () => {
       link: "/",
     },
     {
+      title: "DEVICES",
+      link: "/devices/homeChart",
+    },
+    {
       title: "VC",
       link: "/vc/homeChart",
     },

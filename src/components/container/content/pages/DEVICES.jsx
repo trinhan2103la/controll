@@ -6,14 +6,14 @@ import { publicRoutesCharts, DataALL } from "../charts/routeChart";
 import { Routes, Route } from "react-router-dom";
 
 export default function DEVICES() {
-  const apiUrl = " http://192.168.8.221:8080";
+  const apiUrl = "http://127.0.0.1:5000/";
   return (
     <div>
       <div className="flex gap-4 p-2">
         {DataALL.map((props, index) => {
           return (
             <Link key={index} to={props.links}>
-              <button className="text-2xl font-bold  text-light  bg-sea ">
+              <button className="text-2xl font-bold  text-light  bg-navy ">
                 {props.name}
               </button>
             </Link>
