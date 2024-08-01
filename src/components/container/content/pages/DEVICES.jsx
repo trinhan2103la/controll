@@ -13,7 +13,7 @@ export default function DEVICES() {
         {DataALL.map((props, index) => {
           return (
             <Link key={index} to={props.links}>
-              <button className="text-2xl font-bold  text-white  bg-seaa ">
+              <button className="text-2xl font-bold  text-light  bg-sea ">
                 {props.name}
               </button>
             </Link>

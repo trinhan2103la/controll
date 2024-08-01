@@ -9,11 +9,11 @@ export default function VC() {
   const apiUrl = "http://127.0.0.1:5000/api/VC";
   return (
     <div>
-      <div className="flex gap-4 p-2 justify-center">
+      <div className="flex gap-4 p-2">
         {DataVC.map((props, index) => {
           return (
             <Link key={index} to={props.links}>
-              <button className="font-bold text-2xl bg-sea text-gray-50">
+              <button className="font-bold text-2xl bg-sea text-light">
                 {props.name}
               </button>
             </Link>

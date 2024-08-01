@@ -13,7 +13,7 @@ export default function SYNC() {
         {DataSYNC.map((props, index) => {
           return (
             <Link key={index} to={props.links}>
-              <button className="font-bold text-2xl bg-sea text-gray-50">
+              <button className="font-bold text-2xl bg-navy text-light">
                 {props.name}
               </button>
             </Link>

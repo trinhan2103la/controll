@@ -13,7 +13,7 @@ export default function TDH() {
         {DataTDH.map((props, index) => {
           return (
             <Link key={index} to={props.links}>
-              <button className="font-bold text-2xl bg-sea text-gray-50">
+              <button className="font-bold text-2xl bg-sea text-light">
                 {props.name}
               </button>
             </Link>
