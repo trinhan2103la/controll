@@ -37,7 +37,7 @@ export default function IP() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://192.168.8.221:8080/api/list");
+      const response = await axios.get("https://192.168.8.221:8080/api/list");
       setIps(response.data.data);
       setFilteredIps(response.data.data);
     } catch (error) {
@@ -47,7 +47,7 @@ export default function IP() {
 
   const addData = async () => {
     try {
-      const response = await axios.post("http://192.168.8.221:8080/api/list", {
+      const response = await axios.post("https://192.168.8.221:8080/api/list", {
         type: newType,
         ip: newIP,
       });
@@ -68,7 +68,7 @@ export default function IP() {
     if (confirmDelete) {
       try {
         const response = await axios.delete(
-          "http://192.168.8.221:8080/api/list",
+          "https://192.168.8.221:8080/api/list",
           {
             data: { ip: filteredIps[index].IP },
           }

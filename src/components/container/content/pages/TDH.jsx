@@ -6,7 +6,7 @@ import { publicRoutesCharts, DataTDH } from "../charts/routeChart";
 import { Routes, Route } from "react-router-dom";
 
 export default function TDH() {
-  const apiUrl = "http://192.168.8.221:8080/api/TDH";
+  const apiUrl = "https://192.168.8.221:8080/api/TDH";
   return (
     <div>
       <div className="flex gap-4 p-2">

@@ -6,7 +6,7 @@ import { publicRoutesCharts, DataSYNC } from "../charts/routeChart";
 import { Routes, Route } from "react-router-dom";
 
 export default function SYNC() {
-  const apiUrl = "http://192.168.8.221:8080/api/SYNC";
+  const apiUrl = "https://192.168.8.221:8080/api/SYNC";
   return (
     <div>
       <div className="flex gap-4 p-2">
