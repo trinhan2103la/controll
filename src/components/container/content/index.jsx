@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 
 const Content = () => {
   return (
-    <div className="bg-light">
+    <div>
       <Routes>
         {publicRoutes.map((route, index) => {
           const Page = route.Component;
