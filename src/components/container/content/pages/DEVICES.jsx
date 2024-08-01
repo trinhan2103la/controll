@@ -6,7 +6,7 @@ import { publicRoutesCharts, DataALL } from "../charts/routeChart";
 import { Routes, Route } from "react-router-dom";
 
 export default function DEVICES() {
-  const apiUrl = "http://127.0.0.1:5000/";
+  const apiUrl = "http://192.168.8.221:8080/";
   return (
     <div>
       <div className="flex gap-4 p-2">
