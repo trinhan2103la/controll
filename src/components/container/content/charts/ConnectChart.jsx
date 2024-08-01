@@ -44,8 +44,8 @@ const ConnectChart = ({ apiUrl }) => {
           segments: [
             {
               start: isNaN(uptimeStartTimestamp)
-                ? uptimeStartTimestamp
-                : currentTimestamp,
+                ? currentTimestamp
+                : uptimeStartTimestamp,
               end: currentTimestamp,
               status: initialStatus,
             },
@@ -89,7 +89,7 @@ const ConnectChart = ({ apiUrl }) => {
     data.forEach((device) => {
       const deviceData = device.segments.map((segment) => ({
         x: device.id,
-        y: [segment.start, segment.end],
+        y: [segment.end, segment.start],
         fillColor: segment.status === 1 ? "#3498db" : "#e74c3c", // Blue for successful, Red for unsuccessful
       }));
 
