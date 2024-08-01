@@ -65,7 +65,7 @@ const SideBar = ({ isCollapsed }) => {
               key={index}
               className={`text-white text-2xl py-5 ${
                 activeLink === props.link
-                  ? "bg-pastel-blue text-black"
+                  ? " bg-white text-black"
                   : "hover:bg-blue-200 hover:text-black"
               }`}
               onClick={() => handleLinkClick(props.link)}
