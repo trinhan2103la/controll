@@ -103,10 +103,7 @@ export default function IP() {
             value={newIP}
             onChange={(e) => setNewIP(e.target.value)}
           />
-          <button
-            className="border-2 bg-gray-400 text-white p-2 rounded-md"
-            onClick={addData}
-          >
+          <button className=" bg-gray-400 text-white  " onClick={addData}>
             Add
           </button>
         </div>
@@ -120,7 +117,7 @@ export default function IP() {
           placeholder="Search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="  border-gray-300  w-[30%] mb-5"
+          className=" border-gray-300  w-[30%] mb-5"
         />
         <table className="w-full text-center border border-gray-300 border-collapse">
           <thead>

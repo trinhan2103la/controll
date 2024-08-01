@@ -20,6 +20,6 @@ input {
 button {
   padding: 8px 16px;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
 }

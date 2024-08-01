@@ -6,14 +6,14 @@ import { publicRoutesCharts, DataTDH } from "../charts/routeChart";
 import { Routes, Route } from "react-router-dom";
 
 export default function TDH() {
-  const apiUrl = " http://192.168.8.221:8080/api/TDH";
+  const apiUrl = "http://127.0.0.1:5000/api/TDH";
   return (
     <div>
       <div className="flex gap-4 p-2">
         {DataTDH.map((props, index) => {
           return (
             <Link key={index} to={props.links}>
-              <button className="text-2xl font-bold  border-2 border-red-300  bg-red-300 ">
+              <button className="font-bold text-2xl bg-sea text-gray-50">
                 {props.name}
               </button>
             </Link>

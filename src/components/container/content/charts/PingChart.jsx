@@ -124,7 +124,7 @@ const PingChart = ({ apiUrl }) => {
             onChange={(date) => setStartDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className="p-2 border-none outline-none border-gray-300 rounded text-sm"
+            className="  border-gray-300  text-sm"
           />
         </div>
         <div>
@@ -134,7 +134,7 @@ const PingChart = ({ apiUrl }) => {
             onChange={(date) => setEndDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className="p-2 border-none outline-none border-gray-300 rounded text-sm"
+            className=" border-gray-300  text-sm"
           />
         </div>
       </div>
@@ -143,7 +143,7 @@ const PingChart = ({ apiUrl }) => {
           options={chartOptions}
           series={series}
           type="line"
-          height="450"
+          height="370"
         />
       </div>
     </div>

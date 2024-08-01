@@ -5,7 +5,10 @@ export default {
     extend: {
       colors: {
         navy: "#402E7A",
-        seaa: "#4B70F5",
+        blueNavy: "#4C3BCF",
+        sea: "#a7b1ddc9",
+        gra: "#3DC2EC",
+        light: "#ffebff",
       },
     },
   },

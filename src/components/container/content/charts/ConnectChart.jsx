@@ -170,7 +170,7 @@ const ConnectChart = ({ apiUrl }) => {
             onChange={(date) => setStartDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className="p-2 border-none outline-none border-gray-300 rounded text-sm"
+            className=" border-gray-300 text-sm"
           />
         </div>
         <div>
@@ -180,7 +180,7 @@ const ConnectChart = ({ apiUrl }) => {
             onChange={(date) => setEndDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className="p-2 border-none outline-none border-gray-300 rounded text-sm"
+            className=" border-gray-300 text-sm"
           />
         </div>
       </div>
@@ -189,7 +189,7 @@ const ConnectChart = ({ apiUrl }) => {
           options={chartOptions}
           series={chartSeries}
           type="rangeBar"
-          height="450"
+          height="370"
         />
       </div>
     </div>

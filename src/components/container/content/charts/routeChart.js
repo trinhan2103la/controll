@@ -23,21 +23,6 @@ export const DataVC = [
   },
 ];
 
-export const DataALL = [
-  {
-    links: "/devices/homeChart",
-    name: "HOME",
-  },
-  {
-    links: "/devices/connectChart",
-    name: "CHART",
-  },
-  {
-    links: "/devices/pingChart",
-    name: "PING",
-  },
-];
-
 export const DataTDH = [
   {
     links: "/tdh/homeChart",

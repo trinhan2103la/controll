@@ -33,7 +33,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`mx-1 ${
+        className={`mx-1    ${
           currentPage === 1
             ? "bg-gray-300 text-gray-500"
             : "bg-white text-blue-500 border-blue-500"
@@ -58,7 +58,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`mx-1 ${
+        className={`mx-1  ${
           currentPage === totalPages
             ? "bg-gray-300 text-gray-500"
             : "bg-white text-blue-500 border-blue-500"

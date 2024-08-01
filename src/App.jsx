@@ -1,9 +1,15 @@
-import Container from "./components/container/Container";
+import Content from "./components/container/content";
+import Header from "./components/header/Header";
 
 function App() {
   return (
     <>
-      <Container />
+      <div>
+        <Header />
+      </div>
+      <div>
+        <Content />
+      </div>
     </>
   );
 }
