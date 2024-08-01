@@ -44,8 +44,8 @@ const ConnectChart = ({ apiUrl }) => {
           segments: [
             {
               start: isNaN(uptimeStartTimestamp)
-                ? currentTimestamp
-                : uptimeStartTimestamp,
+                ? uptimeStartTimestamp
+                : currentTimestamp,
               end: currentTimestamp,
               status: initialStatus,
             },
