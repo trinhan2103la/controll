@@ -14,6 +14,7 @@ const PingChart = ({ apiUrl }) => {
     new Date(new Date().setDate(new Date().getDate() + 1))
   );
   const [isUpdating, setIsUpdating] = useState(true);
+  const [lastUpdate, setLastUpdate] = useState(null); // Thời điểm cập nhật cuối cùng
   const intervalIdRef = useRef(null);
 
   // Fetch data from the API
@@ -31,6 +32,7 @@ const PingChart = ({ apiUrl }) => {
 
       setChartData(processedData);
       setFilteredData(processedData);
+      setLastUpdate(new Date()); // Cập nhật thời điểm cuối cùng
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -39,10 +41,16 @@ const PingChart = ({ apiUrl }) => {
   useEffect(() => {
     if (isUpdating) {
       fetchData();
-      intervalIdRef.current = setInterval(fetchData, 30000); // Fetch data every 30 seconds
+      intervalIdRef.current = setInterval(() => {
+        const now = new Date();
+        if (!lastUpdate || now - lastUpdate >= 3600000) {
+          // 1 giờ = 3600000 ms
+          fetchData();
+        }
+      }, 60000); // Kiểm tra mỗi phút
     }
     return () => clearInterval(intervalIdRef.current); // Cleanup interval on unmount
-  }, [fetchData, isUpdating]);
+  }, [fetchData, isUpdating, lastUpdate]);
 
   const handleFilter = useCallback(() => {
     if (startDate && endDate) {

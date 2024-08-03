@@ -16,6 +16,7 @@ const ConnectChart = ({ apiUrl }) => {
   const [chartOptions, setChartOptions] = useState({});
   const [chartSeries, setChartSeries] = useState([]);
   const [isUpdating, setIsUpdating] = useState(true);
+  const [lastUpdate, setLastUpdate] = useState(null); // Thời điểm cập nhật cuối cùng
   const [intervalId, setIntervalId] = useState(null);
 
   const processData = (data, startDate, endDate) => {
@@ -152,8 +153,9 @@ const ConnectChart = ({ apiUrl }) => {
       const rawData = response.data.data;
 
       const processedData = processData(rawData, startDate, endDate);
-
       createChartData(processedData);
+
+      setLastUpdate(new Date()); // Cập nhật thời điểm cuối cùng
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -162,13 +164,19 @@ const ConnectChart = ({ apiUrl }) => {
   useEffect(() => {
     if (isUpdating) {
       fetchData();
-      const id = setInterval(fetchData, 30000); // Update data every 30 seconds
+      const id = setInterval(() => {
+        const now = new Date();
+        if (!lastUpdate || now - lastUpdate >= 3600000) {
+          // 1 giờ = 3600000 ms
+          fetchData();
+        }
+      }, 60000); // Kiểm tra mỗi phút
       setIntervalId(id);
     } else {
       clearInterval(intervalId);
     }
     return () => clearInterval(intervalId); // Cleanup interval on unmount
-  }, [fetchData, isUpdating, intervalId]);
+  }, [fetchData, isUpdating, intervalId, lastUpdate]);
 
   const handleStart = () => {
     setIsUpdating(true);
