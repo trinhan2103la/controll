@@ -158,7 +158,13 @@ const ConnectChart = ({ apiUrl }) => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]); // Re-fetch data when date range changes
+
+    const intervalId = setInterval(() => {
+      fetchData();
+    }, 30000); // Update data every 30 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
+  }, [fetchData]);
 
   return (
     <div>
@@ -170,7 +176,7 @@ const ConnectChart = ({ apiUrl }) => {
             onChange={(date) => setStartDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className=" border-gray-300 text-sm"
+            className="border-gray-300 text-sm"
           />
         </div>
         <div>
@@ -180,7 +186,7 @@ const ConnectChart = ({ apiUrl }) => {
             onChange={(date) => setEndDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className=" border-gray-300 text-sm"
+            className="border-gray-300 text-sm"
           />
         </div>
       </div>

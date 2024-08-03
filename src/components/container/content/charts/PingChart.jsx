@@ -35,8 +35,8 @@ const PingChart = ({ apiUrl }) => {
 
   useEffect(() => {
     fetchData();
-    // const intervalId = setInterval(fetchData, 5000); // Fetch data every 5 seconds
-    // return () => clearInterval(intervalId); // Cleanup interval on unmount
+    const intervalId = setInterval(fetchData, 30000); // Fetch data every 5 seconds
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
   }, [fetchData]);
 
   const handleFilter = useCallback(() => {
