@@ -33,7 +33,7 @@ const Header = () => {
       </div>
       <div className="flex ">
         {Data.map((props, index) => {
-          const isActive = location.pathname.startsWith(props.link);
+          const isActive = location.pathname === props.link;
           return (
             <Link key={index} to={props.link}>
               <div
