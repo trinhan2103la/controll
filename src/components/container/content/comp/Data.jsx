@@ -69,20 +69,13 @@ export const Data = ({ apiUrl }) => {
     return <div className="text-red-500">{error}</div>;
   }
 
-  const headers = [
-    "ip_type",
-    "ip",
-    "result",
-    "status",
-    "datetime",
-    "time_start",
-  ];
+  const headers = ["TYPE", "IP", "PING", "STATUS", "DATE TIME", "TIME START"];
 
   const totalPages = Math.ceil(filteredData.length / rowsPerPage);
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold pb-3">DATA</h1>
+      <h1 className="text-3xl font-serif pb-3">DATA</h1>
       <SearchAndFilter
         searchTerm={searchTerm}
         onSearchTermChange={setSearchTerm}
@@ -96,7 +89,10 @@ export const Data = ({ apiUrl }) => {
         <thead>
           <tr className="bg-gray-100">
             {headers.map((header) => (
-              <th key={header} className="border border-gray-300 p-2 text-left">
+              <th
+                key={header}
+                className="border border-gray-300 p-2 text-center"
+              >
                 {header}
               </th>
             ))}
@@ -107,8 +103,12 @@ export const Data = ({ apiUrl }) => {
             <tr key={index} className="bg-white even:bg-gray-50">
               {headers.map((header) => (
                 <td key={header} className="border border-gray-300 p-2">
-                  {header === "ip" ? row.id_may : row[header]}
-                  {header === "time_start" ? row.uptime_start : ""}
+                  {header === "IP" ? row.id_may : row[header]}
+                  {header === "TIME START" ? row.uptime_start : ""}
+                  {header === "TYPE" ? row.ip_type : ""}
+                  {header === "DATE TIME" ? row.datetime : ""}
+                  {header === "PING" ? row.result : ""}
+                  {header === "STATUS" ? row.status : ""}
                 </td>
               ))}
             </tr>

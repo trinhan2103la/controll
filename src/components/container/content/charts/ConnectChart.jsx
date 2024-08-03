@@ -102,7 +102,7 @@ const ConnectChart = ({ apiUrl }) => {
     setChartOptions({
       chart: {
         type: "rangeBar",
-        height: 450,
+        height: 500,
         animations: {
           enabled: true,
           easing: "easeinout",
@@ -112,7 +112,7 @@ const ConnectChart = ({ apiUrl }) => {
       plotOptions: {
         bar: {
           horizontal: true,
-          barHeight: "50%",
+          barHeight: "100%",
         },
       },
       xaxis: {
@@ -163,23 +163,21 @@ const ConnectChart = ({ apiUrl }) => {
     <div>
       <div className="flex pt-2 gap-5 pl-2">
         <div>
-          <label className="text-2xl">Start Date: </label>
+          <label className="text-2xl font-serif">Start Date: </label>
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className="border-gray-300 text-sm"
           />
         </div>
         <div>
-          <label className="text-2xl">End Date: </label>
+          <label className="text-2xl font-serif">End Date: </label>
           <DatePicker
             selected={endDate}
             onChange={(date) => setEndDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className="border-gray-300 text-sm"
           />
         </div>
       </div>
@@ -188,7 +186,7 @@ const ConnectChart = ({ apiUrl }) => {
           options={chartOptions}
           series={chartSeries}
           type="rangeBar"
-          height="370"
+          height="600"
         />
       </div>
     </div>

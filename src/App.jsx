@@ -8,7 +8,7 @@ function App() {
       <div className="fixed top-0 w-full z-10">
         <Header />
       </div>
-      <div className="bg-light pt-[50px]">
+      <div className="bg-white pt-[50px]">
         <Content />
       </div>
       <ScrollToTop />

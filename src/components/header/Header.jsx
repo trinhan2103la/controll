@@ -27,11 +27,13 @@ const Header = () => {
   ];
 
   return (
-    <div className="flex bg-navy justify-between items-center ">
+    <div className="flex bg-navy justify-between items-center">
       <div className="flex text-2xl gap-2 px-2 text-light">
-        <h1 className="font-bold ">finepro</h1>
+        <Link to="/">
+          <h1 className="font-bold cursor-pointer">finepro</h1>
+        </Link>
       </div>
-      <div className="flex ">
+      <div className="flex">
         {Data.map((props, index) => {
           const isActive = location.pathname === props.link;
           return (

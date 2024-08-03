@@ -122,7 +122,7 @@ export default function IP() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className=" border-gray-300  w-[30%] mb-5"
         />
-        <table className="w-full text-center border border-gray-300 border-collapse">
+        <table className="w-full text-center border border-gray-300 border-collapse ">
           <thead>
             <tr className="bg-gray-100">
               <th className="border border-gray-300 p-2">Type</th>
@@ -138,7 +138,7 @@ export default function IP() {
                   <td className="border border-gray-300 p-2">{ip.IP}</td>
                   <td className="border border-gray-300 p-2">
                     <button
-                      className="border-2 bg-red-300 p-2 rounded-md"
+                      className="bg-navy text-light"
                       onClick={() => deleteData(indexOfFirstItem + index)}
                     >
                       Delete

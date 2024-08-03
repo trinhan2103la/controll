@@ -91,7 +91,7 @@ export default function Result({ apiUrl }) {
 
     if (searchTerm) {
       filtered = filtered.filter((item) =>
-        ["id_may", "ip_type", "connect", "disconnect"].some(
+        ["ip_type", "id_may", "connect", "disconnect"].some(
           (field) =>
             item[field] !== undefined &&
             item[field]
@@ -123,13 +123,13 @@ export default function Result({ apiUrl }) {
     return <div className="text-red-500">{error}</div>;
   }
 
-  const headers = ["ip_type", "ip", "connect", "disconnect"];
+  const headers = ["IP", "TYPE", "CONNECT", "DISCONNECT"];
 
   const totalPages = Math.ceil(filteredData.length / rowsPerPage);
 
   return (
     <div className="p-4">
-      <h1 className="pb-3 text-3xl font-bold">CONNECT - DISCONNECT</h1>
+      <h1 className="pb-3 text-3xl font-serif">CONNECT - DISCONNECT</h1>
       <SearchAndFilter
         searchTerm={searchTerm}
         onSearchTermChange={setSearchTerm}
@@ -143,7 +143,10 @@ export default function Result({ apiUrl }) {
         <thead>
           <tr className="bg-gray-100">
             {headers.map((header) => (
-              <th key={header} className="border border-gray-300 p-2 text-left">
+              <th
+                key={header}
+                className="border border-gray-300 p-2 text-center"
+              >
                 {header}
               </th>
             ))}
@@ -154,11 +157,13 @@ export default function Result({ apiUrl }) {
             <tr key={index} className="bg-white even:bg-gray-50">
               {headers.map((header) => (
                 <td key={header} className="border border-gray-300 p-2">
-                  {header === "connect" || header === "disconnect"
-                    ? row[header]
-                    : header === "ip"
+                  {header === "CONNECT" || header === "DISCONNECT"
+                    ? row[header.toLowerCase()]
+                    : header === "IP"
                     ? row.id_may
-                    : row[header]}
+                    : header === "TYPE"
+                    ? row.ip_type
+                    : row[header.toLowerCase()]}
                 </td>
               ))}
             </tr>

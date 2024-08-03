@@ -73,8 +73,10 @@ const PingChart = ({ apiUrl }) => {
   const chartOptions = {
     chart: {
       type: "line",
-      zoom: {
-        enabled: false,
+      animations: {
+        enabled: true,
+        easing: "easeinout",
+        speed: 800,
       },
     },
     stroke: {
@@ -117,23 +119,21 @@ const PingChart = ({ apiUrl }) => {
     <div>
       <div className="flex pt-2 gap-5 pl-2">
         <div>
-          <label className="text-2xl">Start Date: </label>
+          <label className="text-2xl font-serif">Start Date: </label>
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className="border-gray-300 text-sm"
           />
         </div>
         <div>
-          <label className="text-2xl">End Date: </label>
+          <label className="text-2xl font-serif">End Date: </label>
           <DatePicker
             selected={endDate}
             onChange={(date) => setEndDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className="border-gray-300 text-sm"
           />
         </div>
       </div>
@@ -142,7 +142,7 @@ const PingChart = ({ apiUrl }) => {
           options={chartOptions}
           series={series}
           type="line"
-          height="370"
+          height="500"
         />
       </div>
     </div>

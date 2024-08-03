@@ -17,7 +17,7 @@ const Search = ({
         placeholder="Search "
         value={searchTerm}
         onChange={(e) => onSearchTermChange(e.target.value)}
-        className=" border-gray-300 w-[30%] text-sm"
+        className="w-[30%]"
       />
       <DatePicker
         selected={startDate}
@@ -25,7 +25,6 @@ const Search = ({
         showTimeSelect
         dateFormat="yyyy-MM-dd HH:mm:ss"
         placeholderText="Start"
-        className=" border-gray-300 text-sm"
       />
       <DatePicker
         selected={endDate}
@@ -33,7 +32,6 @@ const Search = ({
         showTimeSelect
         dateFormat="yyyy-MM-dd HH:mm:ss"
         placeholderText="End"
-        className=" border-gray-300  text-sm"
       />
     </div>
   );
