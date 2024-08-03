@@ -4,7 +4,6 @@ import axios from "axios";
 import Chart from "react-apexcharts";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import UpdateToggle from "../comp/UpdateToggle";
 
 const ConnectChart = ({ apiUrl }) => {
   // Initialize startDate to 1 day ago and endDate to the current date
@@ -15,9 +14,6 @@ const ConnectChart = ({ apiUrl }) => {
 
   const [chartOptions, setChartOptions] = useState({});
   const [chartSeries, setChartSeries] = useState([]);
-  const [isUpdating, setIsUpdating] = useState(true);
-  const [lastUpdate, setLastUpdate] = useState(null); // Thời điểm cập nhật cuối cùng
-  const [intervalId, setIntervalId] = useState(null);
 
   const processData = (data, startDate, endDate) => {
     const timelineData = [];
@@ -154,37 +150,14 @@ const ConnectChart = ({ apiUrl }) => {
 
       const processedData = processData(rawData, startDate, endDate);
       createChartData(processedData);
-
-      setLastUpdate(new Date()); // Cập nhật thời điểm cuối cùng
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }, [apiUrl, startDate, endDate]);
 
   useEffect(() => {
-    if (isUpdating) {
-      fetchData();
-      const id = setInterval(() => {
-        const now = new Date();
-        if (!lastUpdate || now - lastUpdate >= 3600000) {
-          // 1 giờ = 3600000 ms
-          fetchData();
-        }
-      }, 60000); // Kiểm tra mỗi phút
-      setIntervalId(id);
-    } else {
-      clearInterval(intervalId);
-    }
-    return () => clearInterval(intervalId); // Cleanup interval on unmount
-  }, [fetchData, isUpdating, intervalId, lastUpdate]);
-
-  const handleStart = () => {
-    setIsUpdating(true);
-  };
-
-  const handleStop = () => {
-    setIsUpdating(false);
-  };
+    fetchData();
+  }, [fetchData]);
 
   return (
     <div>
@@ -209,11 +182,6 @@ const ConnectChart = ({ apiUrl }) => {
             className="border-gray-300 text-sm"
           />
         </div>
-        <UpdateToggle
-          isUpdating={isUpdating}
-          onStart={handleStart}
-          onStop={handleStop}
-        />
       </div>
       <div className="pt-2 pr-2">
         <Chart

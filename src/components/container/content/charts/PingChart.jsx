@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Chart from "react-apexcharts";
-import UpdateToggle from "../comp/UpdateToggle";
+
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -13,9 +13,6 @@ const PingChart = ({ apiUrl }) => {
   const [endDate, setEndDate] = useState(
     new Date(new Date().setDate(new Date().getDate() + 1))
   );
-  const [isUpdating, setIsUpdating] = useState(true);
-  const [lastUpdate, setLastUpdate] = useState(null); // Thời điểm cập nhật cuối cùng
-  const intervalIdRef = useRef(null);
 
   // Fetch data from the API
   const fetchData = useCallback(async () => {
@@ -32,25 +29,14 @@ const PingChart = ({ apiUrl }) => {
 
       setChartData(processedData);
       setFilteredData(processedData);
-      setLastUpdate(new Date()); // Cập nhật thời điểm cuối cùng
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }, [apiUrl]);
 
   useEffect(() => {
-    if (isUpdating) {
-      fetchData();
-      intervalIdRef.current = setInterval(() => {
-        const now = new Date();
-        if (!lastUpdate || now - lastUpdate >= 3600000) {
-          // 1 giờ = 3600000 ms
-          fetchData();
-        }
-      }, 60000); // Kiểm tra mỗi phút
-    }
-    return () => clearInterval(intervalIdRef.current); // Cleanup interval on unmount
-  }, [fetchData, isUpdating, lastUpdate]);
+    fetchData();
+  }, [fetchData]);
 
   const handleFilter = useCallback(() => {
     if (startDate && endDate) {
@@ -127,14 +113,6 @@ const PingChart = ({ apiUrl }) => {
     },
   };
 
-  const handleStart = () => {
-    setIsUpdating(true);
-  };
-
-  const handleStop = () => {
-    setIsUpdating(false);
-  };
-
   return (
     <div>
       <div className="flex pt-2 gap-5 pl-2">
@@ -158,11 +136,6 @@ const PingChart = ({ apiUrl }) => {
             className="border-gray-300 text-sm"
           />
         </div>
-        <UpdateToggle
-          isUpdating={isUpdating}
-          onStart={handleStart}
-          onStop={handleStop}
-        />
       </div>
       <div className="pt-2 pr-2">
         <Chart
