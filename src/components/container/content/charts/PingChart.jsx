@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import Chart from "react-apexcharts";
+import UpdateToggle from "../comp/UpdateToggle";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,6 +13,8 @@ const PingChart = ({ apiUrl }) => {
   const [endDate, setEndDate] = useState(
     new Date(new Date().setDate(new Date().getDate() + 1))
   );
+  const [isUpdating, setIsUpdating] = useState(true);
+  const intervalIdRef = useRef(null);
 
   // Fetch data from the API
   const fetchData = useCallback(async () => {
@@ -34,10 +37,12 @@ const PingChart = ({ apiUrl }) => {
   }, [apiUrl]);
 
   useEffect(() => {
-    fetchData();
-    const intervalId = setInterval(fetchData, 30000); // Fetch data every 5 seconds
-    return () => clearInterval(intervalId); // Cleanup interval on unmount
-  }, [fetchData]);
+    if (isUpdating) {
+      fetchData();
+      intervalIdRef.current = setInterval(fetchData, 30000); // Fetch data every 30 seconds
+    }
+    return () => clearInterval(intervalIdRef.current); // Cleanup interval on unmount
+  }, [fetchData, isUpdating]);
 
   const handleFilter = useCallback(() => {
     if (startDate && endDate) {
@@ -114,6 +119,14 @@ const PingChart = ({ apiUrl }) => {
     },
   };
 
+  const handleStart = () => {
+    setIsUpdating(true);
+  };
+
+  const handleStop = () => {
+    setIsUpdating(false);
+  };
+
   return (
     <div>
       <div className="flex pt-2 gap-5 pl-2">
@@ -124,7 +137,7 @@ const PingChart = ({ apiUrl }) => {
             onChange={(date) => setStartDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className="  border-gray-300  text-sm"
+            className="border-gray-300 text-sm"
           />
         </div>
         <div>
@@ -134,9 +147,14 @@ const PingChart = ({ apiUrl }) => {
             onChange={(date) => setEndDate(date)}
             showTimeSelect
             dateFormat="Pp"
-            className=" border-gray-300  text-sm"
+            className="border-gray-300 text-sm"
           />
         </div>
+        <UpdateToggle
+          isUpdating={isUpdating}
+          onStart={handleStart}
+          onStop={handleStop}
+        />
       </div>
       <div className="pt-2 pr-2">
         <Chart

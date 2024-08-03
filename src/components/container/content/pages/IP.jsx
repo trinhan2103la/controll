@@ -106,7 +106,7 @@ export default function IP() {
             value={newIP}
             onChange={(e) => setNewIP(e.target.value)}
           />
-          <button className=" bg-gray-400 text-white  " onClick={addData}>
+          <button className=" bg-navy text-light  " onClick={addData}>
             Add
           </button>
         </div>

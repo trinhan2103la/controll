@@ -4,6 +4,7 @@ import axios from "axios";
 import Chart from "react-apexcharts";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import UpdateToggle from "../comp/UpdateToggle";
 
 const ConnectChart = ({ apiUrl }) => {
   // Initialize startDate to 1 day ago and endDate to the current date
@@ -14,6 +15,8 @@ const ConnectChart = ({ apiUrl }) => {
 
   const [chartOptions, setChartOptions] = useState({});
   const [chartSeries, setChartSeries] = useState([]);
+  const [isUpdating, setIsUpdating] = useState(true);
+  const [intervalId, setIntervalId] = useState(null);
 
   const processData = (data, startDate, endDate) => {
     const timelineData = [];
@@ -157,14 +160,23 @@ const ConnectChart = ({ apiUrl }) => {
   }, [apiUrl, startDate, endDate]);
 
   useEffect(() => {
-    fetchData();
-
-    const intervalId = setInterval(() => {
+    if (isUpdating) {
       fetchData();
-    }, 30000); // Update data every 30 seconds
-
+      const id = setInterval(fetchData, 30000); // Update data every 30 seconds
+      setIntervalId(id);
+    } else {
+      clearInterval(intervalId);
+    }
     return () => clearInterval(intervalId); // Cleanup interval on unmount
-  }, [fetchData]);
+  }, [fetchData, isUpdating, intervalId]);
+
+  const handleStart = () => {
+    setIsUpdating(true);
+  };
+
+  const handleStop = () => {
+    setIsUpdating(false);
+  };
 
   return (
     <div>
@@ -189,6 +201,11 @@ const ConnectChart = ({ apiUrl }) => {
             className="border-gray-300 text-sm"
           />
         </div>
+        <UpdateToggle
+          isUpdating={isUpdating}
+          onStart={handleStart}
+          onStop={handleStop}
+        />
       </div>
       <div className="pt-2 pr-2">
         <Chart
