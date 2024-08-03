@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
   const Data = [
     {
       title: "IP",
@@ -32,9 +33,14 @@ const Header = () => {
       </div>
       <div className="flex ">
         {Data.map((props, index) => {
+          const isActive = location.pathname === props.link;
           return (
             <Link key={index} to={props.link}>
-              <div className="text-light font-bold text-2xl px-4 py-2 hover:bg-blue-950 hover:text-light h-full">
+              <div
+                className={`text-light font-bold text-2xl px-4 py-2 hover:bg-blue-950 hover:text-light h-full ${
+                  isActive ? "bg-blue-950" : ""
+                }`}
+              >
                 <h1>{props.title}</h1>
               </div>
             </Link>
