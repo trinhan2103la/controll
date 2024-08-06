@@ -9,8 +9,10 @@ export const Data = ({ apiUrl }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(
+    new Date(new Date().setDate(new Date().getDate() + 1))
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
 
