@@ -10,17 +10,10 @@ const PingChart = ({ apiUrl }) => {
   const [chartData, setChartData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0
-
-  const [startDate, setStartDate] = useState(today);
-  const [endDate, setEndDate] = useState(
-    new Date(today.getTime() + 24 * 60 * 60 * 1000) // Add one day to the start date
+  const [startDate, setStartDate] = useState(
+    new Date(new Date().setDate(new Date().getDate() - 1))
   );
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(
-  //   new Date(new Date().setDate(new Date().getDate() + 1))
-  // );
+  const [endDate, setEndDate] = useState(new Date());
 
   // Fetch data from the API
   const fetchData = useCallback(async () => {
