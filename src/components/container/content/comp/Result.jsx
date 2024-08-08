@@ -10,10 +10,10 @@ export default function Result({ apiUrl }) {
   const [filteredData, setFilteredData] = useState([]);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(
-    new Date(new Date().setDate(new Date().getDate() + 1))
+  const [startDate, setStartDate] = useState(
+    new Date(new Date().setDate(new Date().getDate() - 1))
   );
+  const [endDate, setEndDate] = useState(new Date());
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
 
